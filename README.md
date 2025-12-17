@@ -53,4 +53,4 @@ This branch is configured with Docker Volumes.
 To stop the engine and free up resources:
 Bash
 
-docker-compose down
+    docker-compose down
