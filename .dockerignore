@@ -1,0 +1,19 @@
+# Ignore local dependencies (the container will install its own)
+node_modules
+npm-debug.log
+
+# Ignore Windows build artifacts
+dist
+
+# Ignore Git files
+.git
+.gitignore
+
+# Ignore local input/output files
+input/*
+output/*
+!input/.gitkeep
+!output/.gitkeep
+
+# Ignore macOS system files (for your colleagues)
+.DS_Store
