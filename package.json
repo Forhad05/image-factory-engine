@@ -5,20 +5,26 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js" 
+    "dev": "node --watch server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YOUR_USERNAME/YOUR_REPO.git"
   },
-  "keywords": ["figma", "webp", "sharp", "image-optimization", "automation"],
+  "keywords": [
+    "figma",
+    "webp",
+    "sharp",
+    "image-optimization",
+    "automation"
+  ],
   "author": "Your Name",
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "chokidar": "^4.0.1",
     "cors": "^2.8.5",
-    "express": "^4.19.2",
+    "express": "^4.22.1",
     "multer": "^1.4.5-lts.1",
     "node-notifier": "^10.0.1",
     "sharp": "^0.33.5"
