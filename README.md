@@ -1,70 +1,56 @@
-# ⚡ Image Factory Engine
+⚡ Image Factory (Mac & Linux Edition)
 
-An automated, high-precision image processing engine designed to bridge the gap between **Figma exports** and **Web-ready assets**. 
+Welcome to the Dockerized version of the Image Factory! This version is built for cross-platform compatibility, allowing macOS and Linux users to run the conversion engine without needing to install Node.js or handle Windows-specific files.
+🍎 Why use this version?
 
-This tool takes high-resolution `3x` PNG exports and automatically converts them into optimized `2x` WebP files, while maintaining a timestamped "History" archive of every single export.
+    Zero Dependency: No need to install Node.js, Sharp, or libraries on your local machine.
 
+    Architecture Agnostic: Works perfectly on Intel Macs and Apple Silicon (M1/M2/M3).
 
+    Folder Sync: Drag files into a local folder on your Mac, and let the Linux container do the work.
 
-## 🚀 Features
+🚀 Quick Start (Mac Users)
+1. Prerequisites
 
-* **Smart Downsampling:** Automatically converts 3x Figma frames to 2x WebP (approx. 66% width) to balance quality and performance.
-* **Zero-Collision History:** Saves every original export in a `/history` folder with millisecond-precision timestamps: `Image - (Dec), (18), (2025) - [10-30-45-999-PM].png`.
-* **Web Dashboard:** A clean, drag-and-drop interface for designers.
-* **API-First Design:** Easily integrable with other workflows or future Docker/Electron wrappers.
-* **Self-Cleaning:** Automatically manages the workspace to prevent clutter.
+Ensure you have Docker Desktop installed and running.
+2. Setup
 
-## 🛠️ Tech Stack
+Open your Terminal and run the following commands:
+Bash
 
-* **Engine:** [Node.js](https://nodejs.org/)
-* **Processing:** [Sharp](https://sharp.pixelplumbing.com/) (High-performance image processing)
-* **Server:** [Express.js](https://expressjs.com/) & [Multer](https://github.com/expressjs/multer)
-* **Watcher:** [Chokidar](https://github.com/paulmillgoy/chokidar)
+# Clone the specific docker branch
+git clone -b docker-version https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 
-## 📦 Installation
+# Move into the project
+cd YOUR_REPO_NAME
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/YOUR_USERNAME/image-factory-engine.git](https://github.com/YOUR_USERNAME/image-factory-engine.git)
-    cd image-factory-engine
-    ```
+# Launch the factory
+docker-compose up --build -d
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+3. Use the App
 
-3.  **Start the Engine:**
-    ```bash
-    npm start
-    ```
+Once the build is finished, open your browser to: 👉 http://localhost:3000
+📥 Two Ways to Convert
+Option A: The Web Interface
 
-## 🖥️ Usage
+Simply drag your 3x PNG files into the browser window. The optimized WebP files will be generated and can be "Shown in Folder" immediately.
+Option B: The "Magic" Folders
 
-1.  Keep the terminal running.
-2.  Open `index.html` in your browser (using Live Server or by opening the file).
-3.  Drag and drop your Figma PNG exports into the UI.
-4.  Download your optimized WebP instantly!
+This branch is configured with Docker Volumes.
 
-> **Pro-Tip:** Your original files are safely backed up in the `./history` folder automatically.
+    Drop your PNGs into the /input folder in this project directory.
 
-## 📁 Folder Structure
+    The converted files will automatically appear in the /output folder.
 
-* `/input`: Temporary storage for uploaded files.
-* `/output`: Where your optimized WebP files live.
-* `/history`: Your permanent archive of original assets.
-* `index.html`: The designer-friendly dashboard.
-* `server.js`: The "brain" of the operation.
+🛠 Troubleshooting for Mac
 
+    Folder Access: If macOS asks "Docker would like to access files in your Desktop/Documents folder," click Allow. This is necessary for the /input and /output folders to sync.
 
+    Port Conflict: If you get an error saying Bind for 0.0.0.0:3000 failed, it means another app is using port 3000. Edit the docker-compose.yml file to change "3000:3000" to "3001:3000".
 
-## 🗺️ Roadmap
+🧹 Cleanup
 
-- [ ] Docker Compose support for one-click deployment.
-- [ ] Electron wrapper for a standalone `.exe` / `.app` desktop experience.
-- [ ] Quality slider (1-100) in the UI.
-- [ ] Batch "Download All" as .zip.
+To stop the engine and free up resources:
+Bash
 
-## 📄 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+docker-compose down
